@@ -1,0 +1,79 @@
+# common.lib
+#
+# ver 0.1.0
+# Modified: 26-05-2020
+
+# Essential files
+BOT="YERTE"
+ESSFILE="run.sh nightrun.sh common.lib cabals.sh"
+CDN="https://cabals.web.app"
+
+DEF="\e[0m"
+ULINE="\e[4m"
+CDEF="\e[39m"
+LCYAN="\e[96m"
+LGREN="\e[92m"
+LRED="\e[91m"
+INV="\e[7m"
+BOLD="\e[1m"
+
+
+# isi 1 baris kosong
+function f1baris() {
+    printf "\n"
+}
+
+# isi 2 baris kosong
+function f2baris() {
+    printf "\n\n"
+}
+
+# wget file dari url
+function flogo() {
+    echo -e "\n${LRED}"
+    printf " ▄████▄  ▄▄▄       ▄▄▄▄    ▄▄▄      ██▓   " && f1baris
+    printf "▒██▀ ▀█ ▒████▄    ▓█████▄ ▒████▄   ▓██▒   " && f1baris
+    printf "▒▓█    ▄▒██  ▀█▄  ▒██▒ ▄██▒██  ▀█▄ ▒██░   " && f1baris
+    printf "▒▓▓▄ ▄██░██▄▄▄▄██ ▒██░█▀  ░██▄▄▄▄██▒██░   " && f1baris
+    printf "▒ ▓███▀  ▓█   ▓██▒░▓█  ▀█▓ ▓█   ▓██░██████" && f1baris
+    printf "░ ░▒ ▒   ▒▒   ▓▒█░░▒▓███▀▒ ▒▒   ▓▒█░ ▒░▓  " && f1baris
+    printf "  ░  ▒    ░   ▒▒ ░▒░▒   ░   ░   ▒▒ ░ ░ ▒  " && f1baris
+    printf "░         ░   ▒    ░    ░   ░   ▒    ░ ░  " && f1baris
+    printf "░ ░           ░  ░ ░            ░      ░  " && echo -e "${CDEF}\n\n"
+}
+
+# wget file dari url
+function fwget() {
+    sudo wget -q https://erol.my.id/$1
+}
+
+# bye dari Cortana waktu exit
+function fbye() {
+    echo -e "${LCYAN}[${BOT}]:${CDEF} Bye."
+}
+
+# buat file bisa dieksekusi
+function fchmodx() {
+    sudo chmod +x $1
+}
+
+# bye dari Cortana waktu exit
+function fselesai() {
+    echo -e "${LGREN}✔  ${ULINE}SELESAI.${DEF}${CDEF}"
+}
+
+# hapus files asal
+function frmfile() {
+    rm -fR $FILE
+}
+
+# hapus related files saat keluar
+function frmall() {
+    rm -fR $FILE $ESSFILE
+}
+
+# deteksi nama distro
+function catdistro() {
+    CATOS=$(sudo cat /etc/os-release | grep -w ID | cut -d '=' -f 2)
+    CATOSx=$(sudo cat /etc/os-release | grep -w ID | cut -d '"' -f 2)
+}
