@@ -1,14 +1,14 @@
 #!/bin/bash
 #
 # cabals.sh
-# ver 0.1.0
-# Modified: 26-05-2020
+# ver 0.2.0
+# Modified: 02-06-2020
 
 . common.lib
 
 clear
 FILE="cabals.sh"
-VER="0.1.0"
+VER="0.2.0"
 
 ## Start Header ##
 flogo
@@ -20,12 +20,19 @@ printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 function fwork() {
     echo -e "${CDEF}"
     echo -e "${LCYAN}[${BOT}]:${CDEF} Apa yang akan dikerjakan?"
-    select yn in "Emergency Stop/Restart"\
+    select yn in "Install CABAL EP8"\
+     "Emergency Stop/Restart"\
      "Server Status"\
      "Exit"; do
         case $yn in
+            "Install CABAL EP8" ) 
+                VARI="install_cabal.sh";
+                fwget "${VARI} -O ${VARI}";  # wget FILE01
+                fchmodx "${VARI}" && ./${VARI}; # chmod dan eksekusi FILE01
+                frmfile; # remove related files
+                break;;
             "Emergency Stop/Restart" ) 
-                VARE="emergency_thor.sh";
+                VARE="emergency.sh";
                 fwget "${VARE} -O ${VARE}";  # wget FILE01
                 fchmodx "${VARE}" && ./${VARE}; # chmod dan eksekusi FILE01
                 frmfile; # remove related files
